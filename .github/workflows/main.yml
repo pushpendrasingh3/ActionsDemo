@@ -16,8 +16,8 @@ jobs:
 
       - name: Compile
         run: echo "Hello, world!"
-      - name: Output event data    
-        run: echo "${{ toJSON(github.event) }}"
+        #- name: Output event data    
+        #run: echo "${{ toJSON(github.event) }}"
       - name: Block close  
         run: echo "---------------------------"
     
