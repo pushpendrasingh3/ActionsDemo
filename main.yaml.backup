@@ -15,11 +15,10 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Compile
-        run: echo "Hello, world!"
-        #- name: Output event data    
-        #run: echo "${{ toJSON(github.event) }}"
-      - name: Block close  
-        run: echo "---------------------------"
+        run: |
+          echo "Hello, world!"
+          echo "${{ toJSON(github.event) }}"
+          echo "---------------------------"
     
   DeployDev:
     name: Deploy to Dev 
@@ -32,9 +31,8 @@ jobs:
       url: 'http://dev.myapp.com'
     steps:
       - name: Deploy
-        run: echo I am deploying in Development! 
-      - name: Output event data  
-        run: echo "${{ toJSON(github.event) }}"
+      - run: echo I am deploying in Development! 
+      - run: echo "${{ toJSON(github.event) }}"
 
     
   DeployStaging:
