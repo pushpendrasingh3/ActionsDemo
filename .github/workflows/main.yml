@@ -2,11 +2,11 @@ name: CI + CD
 
 on:
   push:
-    branches: [ release, feature ]
+    branches: [ release, feature, main ]
   pull_request:
     branches: [ release, main ]
   workflow_dispatch:
-    branches: [ feature, release ]
+    branches: [ feature, release, main ]
 
 jobs:
   Build:
