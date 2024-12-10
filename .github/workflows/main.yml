@@ -1,10 +1,11 @@
 name: CI + CD
 
 on:
-  push:
-    branches: [ release, feature, main ]
+  #push:
+  # branches: [ release, feature, main ]
   pull_request_target:
     branches: [ release, main ]
+    types: [opened, synchronize, ready_for_review]  
   workflow_dispatch:
     branches: [ feature, release, main ]
 
