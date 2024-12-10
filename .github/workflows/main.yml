@@ -1,12 +1,13 @@
 name: CI + CD
 
 on:
-  push:
-    branches: [ release, feature ]
-  pull_request:
+  #push:
+  # branches: [ release, feature, main ]
+  pull_request_target:
     branches: [ release, main ]
+    types: [opened, synchronize, ready_for_review]  
   workflow_dispatch:
-    branches: [ feature, release ]
+    branches: [ feature, release, main ]
 
 jobs:
   Build:
@@ -23,7 +24,7 @@ jobs:
     
   DeployDev:
     name: Deploy to Dev 
-    if: ((github.event_name == 'push') && (github.event.ref == 'refs/heads/feature'))
+    if: github.event.ref == 'refs/heads/feature'
     # if: github.event.ref == 'refs/heads/feature'
     needs: [Build]
     runs-on: ubuntu-latest
@@ -39,7 +40,7 @@ jobs:
     
   DeployStaging:
     name: Deploy to Staging 
-    if: ((github.event.ref == 'refs/heads/release') || (github.event_name == 'pull_request'))
+    if: github.event.ref == 'refs/heads/release'
     needs: [Build]
     runs-on: ubuntu-latest
     environment: 
