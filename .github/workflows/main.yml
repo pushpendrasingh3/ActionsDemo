@@ -1,11 +1,8 @@
 name: CI + CD
 
 on:
-  #push:
-  # branches: [ release, feature, main ]
-  pull_request_target:
-    branches: [ release, main ]
-    types: [opened, synchronize, ready_for_review]  
+  push:
+    branches: [ release, feature, main ]
   workflow_dispatch:
     branches: [ feature, release, main ]
 
@@ -25,7 +22,6 @@ jobs:
   DeployDev:
     name: Deploy to Dev 
     if: github.event.ref == 'refs/heads/feature'
-    # if: github.event.ref == 'refs/heads/feature'
     needs: [Build]
     runs-on: ubuntu-latest
     environment: 
@@ -34,8 +30,6 @@ jobs:
     steps:
       - name: Deploy
         run: echo I am deploying in Development! 
-      - name: Output event data  
-        run: echo "${{ toJSON(github.event) }}"
 
     
   DeployStaging:
@@ -53,7 +47,8 @@ jobs:
 
   DeployProd:
     name: Deploy to Production 
-    needs: [DeployStaging]
+    #needs: [DeployStaging]
+    needs: [Build]
     runs-on: ubuntu-latest
     environment: 
       name: Production
