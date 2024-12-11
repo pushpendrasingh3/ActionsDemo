@@ -2,7 +2,7 @@ name: CI + CD
 
 on:
   push:
-    branches: [ release, feature, main ]
+    branches: [ feature ]
     paths-ignore:
       - '.github/workflows/*'  
   workflow_dispatch:
