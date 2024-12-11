@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: sample-app-project
+  name: demo-app-project
   namespace: argocd
   # Finalizer that ensures that project is not deleted until it is not referenced by any application
   finalizers:
@@ -17,12 +17,12 @@ spec:
   # Only permit applications to deploy to the guestbook namespace in the same cluster
   # Destination clusters can be identified by 'server', 'name', or both.
   destinations:
-  - namespace: sample
+  - namespace: demo
     #server: https://kubernetes.default.svc
     server: https://34.47.198.97
     #name: mgmt-gke
     #
-  - namespace: sample-app
+  - namespace: demo-app
     #server: https://kubernetes.default.svc
     server: https://34.47.151.239
   # Deny all cluster-scoped resources from being created, except for Namespace
