@@ -6,4 +6,5 @@ testing the approval process
 Testing the feature branch
 testing the approval in pull-request
 testing of push initiated from feature dev branch 
-testing of push initiated from feature for dev and main branch
+testing of push initiated from feature for dev and main branc
+testing the workflow 
