@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: sample-app-project
+  namespace: argocd
+  # Finalizer that ensures that project is not deleted until it is not referenced by any application
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  # Project description
+  description: Testing and configuring DevOps CICD workflow
+
+  # Allow manifests to deploy from any Git repos
+  sourceRepos:
+  - '*'
+
+  # Only permit applications to deploy to the guestbook namespace in the same cluster
+  # Destination clusters can be identified by 'server', 'name', or both.
+  destinations:
+  - namespace: sample
+    #server: https://kubernetes.default.svc
+    server: https://34.47.198.97
+    #name: mgmt-gke
+    #
+  - namespace: sample-app
+    #server: https://kubernetes.default.svc
+    server: https://34.47.151.239
+  # Deny all cluster-scoped resources from being created, except for Namespace
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+
+  # Enables namespace orphaned resource monitoring.
+  orphanedResources:
+    warn: false
+
