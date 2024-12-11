@@ -9,10 +9,6 @@ on:
     branches: [ feature, release, main ]
     paths-ignore:
       - '.github/workflows/*'  
-  pull_request:
-    branches: [ release, main ]
-    types: [closed]  
-          
 jobs:
   Build:
     runs-on: ubuntu-latest
@@ -41,7 +37,7 @@ jobs:
     
   DeployStaging:
     name: Deploy to Staging 
-    if: ((github.event.ref == 'refs/heads/release' ) && ( ${{ github.event.pull_request.merged }} ))
+    if: github.event.ref == 'refs/heads/release'
     needs: [Build]
     runs-on: ubuntu-latest
     environment: 
