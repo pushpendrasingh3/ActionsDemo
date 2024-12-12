@@ -53,7 +53,7 @@ jobs:
           ref: 'feature'
           token: ${{ secrets.GH_TOKEN }}  
       - name: Deploy
-        run: echo I am deploying in Development! 
+        run: echo Deploying in Development dev-gke cluster! 
 
     
   DeployStaging:
@@ -65,8 +65,14 @@ jobs:
       name: Staging
       url: 'http://test.myapp.com'
     steps:
+      - name: Login to GitHub Packages
+        uses: actions/checkout@v3
+        with:
+          repository: pushpendrasingh3/ActionsDemo
+          ref: 'release'
+          token: ${{ secrets.GH_TOKEN }}      
       - name: Deploy
-        run: echo I am deploying in Staging! 
+        run: echo Deploying in Staging gke clusterr! 
            
 
   DeployProd:
@@ -80,5 +86,11 @@ jobs:
       name: Production
       url: 'http://www.myapp.com'
     steps:
+      - name: Login to GitHub Packages
+        uses: actions/checkout@v3
+        with:
+          repository: pushpendrasingh3/ActionsDemo
+          ref: 'main'
+          token: ${{ secrets.GH_TOKEN }}     
       - name: Deploy
-        run: echo I am deploying in Production!  
+        run: echo Deploying in Production gke Cluster!  
