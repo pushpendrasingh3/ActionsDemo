@@ -8,10 +8,11 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: demo-app-project
+  project: app-project
   source:
     repoURL: https://github.com/pushpendrasingh3/ActionsDemo.git
-    targetRevision: HEAD
+    targetRevision: feature
+    #targetRevision: HEAD
     path: argocd-cicd-setup/dev
   destination:
     #server: https://kubernetes.default.svc
