@@ -2,10 +2,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-custom-container
+  name: custom-container
   namespace: demo-app
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app: apache
@@ -17,7 +17,7 @@ spec:
       containers:
         - name: my-container
           imagePullPolicy: Always
-          image: pushpendrasingh3tcscom/demo-app:2.0.0
+          image: pushpendrasingh3tcscom/demo-app:2.0.1
           ports:
             - containerPort: 80
 ---
