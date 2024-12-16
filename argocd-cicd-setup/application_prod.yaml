@@ -11,7 +11,7 @@ spec:
   project: app-project
   source:
     repoURL: https://github.com/pushpendrasingh3/ActionsDemo.git
-    targetRevision: release
+    targetRevision: main
     #targetRevision: HEAD
     path: argocd-cicd-setup/prod
   destination:
