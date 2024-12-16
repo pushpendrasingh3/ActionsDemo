@@ -5,8 +5,8 @@ path = os.listdir(filepath)
 for content in path:
     print(content)
 
-current = "2.0.2"
-new     = "2.0.3"
+current = "2.0.3"
+new     = "2.0.4"
 total =  0
 for content in path:
     counter = 0
