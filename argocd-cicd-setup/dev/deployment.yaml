@@ -5,7 +5,7 @@ metadata:
   name: demo-custom-container
   namespace: demo
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: apache
@@ -17,7 +17,7 @@ spec:
       containers:
         - name: my-container
           imagePullPolicy: Always
-          image: pushpendrasingh3tcscom/demo-app:2.0.2
+          image: pushpendrasingh3tcscom/demo-app:2.0.3
           ports:
             - containerPort: 80
 ---
