@@ -17,7 +17,7 @@ spec:
       containers:
         - name: my-container
           imagePullPolicy: Always
-          image: pushpendrasingh3tcscom/demo-app:2.0.4
+          image: pushpendrasingh3tcscom/demo-app:2.0.5
           ports:
             - containerPort: 80
 ---
